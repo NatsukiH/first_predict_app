@@ -54,14 +54,15 @@ def upload_file():
     if request.method == 'POST':
         f = request.files["the_file"]
 
+        # 現在のディレクトリを取得
+        path = os.path.abspath(__file__)[:-11]
+
         # 任意の階層をフルパスで指定(macの場合。任意のユーザー名は変更してください。)
-        f.save('C:/Users/natsu/Documents/workspace/workschool/first_predict_app/uploads/' +
-               secure_filename(f.filename))
+        f.save(path + '/uploads/' + secure_filename(f.filename))
 
         # ------予測する-------
         # ニューラルネットワークのモデルを読み込み
-        # 現在のディレクトリを取得
-        path = os.path.abspath(__file__)[:-11]
+
         model_name = path + '/app/predict/gbdt.pkl'
         model = joblib.load(model_name)
 
