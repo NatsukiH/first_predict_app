@@ -1,4 +1,2 @@
 app/predict/train_x.csv
 app/predict/train_y.csv
-uploads/test_x.csv
-results/result.csv
